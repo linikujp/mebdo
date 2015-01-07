@@ -251,13 +251,13 @@ Read more : http://www.ehow.com/about_4650731_definition-health-care-provider.ht
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000015"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000015"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -271,14 +271,14 @@ Read more : http://www.ehow.com/about_4650731_definition-health-care-provider.ht
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000016"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000020"/>
+                <owl:onProperty rdf:resource="&obo;MEBDO_0000025"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000013"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;MEBDO_0000025"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000013"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000020"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A state of the United States of America is one of the 50 constituent political entities that shares its sovereignty with the United States federal government</obo:IAO_0000115>
@@ -325,14 +325,14 @@ Read more : http://www.ehow.com/about_4650731_definition-health-care-provider.ht
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000016"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
+                <owl:onProperty rdf:resource="&obo;MEBDO_0000025"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000013"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;MEBDO_0000025"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000013"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A county is a political and geographic subdivision of a state, usually assigned some governmental authority</obo:IAO_0000115>
@@ -445,6 +445,17 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <obo:IAO_0000115 xml:lang="en">Diagnosis-related group (DRG) is a system to classify hospital cases into one of approximately 500 groups, also referred to as DRGs, expected to have similar hospital resource use. They have been used in the United States since 1983. There is more than one DRG system being used in the United States, but only the MS-DRG (CMS-DRG) system is used by Medicare.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">YL</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">http://www.findacode.com/drg/drg-diagnosis-related-group-codes.html</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_0000030 -->
+
+    <owl:Class rdf:about="&obo;MEBDO_0000030">
+        <rdfs:label xml:lang="en">Ambulatory Payment Classified service</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000007"/>
+        <obo:IAO_0000118>APCs</obo:IAO_0000118>
+        <obo:IAO_0000118 xml:lang="en">Ambulatory Payment Classification</obo:IAO_0000118>
     </owl:Class>
     
 
