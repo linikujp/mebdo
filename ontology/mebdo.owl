@@ -500,7 +500,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000035 -->
 
     <owl:Class rdf:about="&obo;MEBDO_0000035">
-        <rdfs:label xml:lang="en">Level I &amp; Photochemotherapy</rdfs:label>
+        <rdfs:label xml:lang="en">Level I Photochemotherapy</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0001</obo:MEBDO_0000034>
     </owl:Class>
