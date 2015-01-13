@@ -1,42 +1,4 @@
-<?xml version="1.0"?>
 
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
-    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
-    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
-    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
-<rdf:RDF xmlns="&obo;mebdo_hospital_indivudial.owl#"
-     xml:base="&obo;mebdo_hospital_indivudial.owl"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:obo="http://purl.obolibrary.org/obo/"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="&obo;mebdo_hospital_indivudial.owl">
-        <dc:contributor xml:lang="en">Asiyah Yu Lin (YL)</dc:contributor>
-        <rdfs:comment>The individual hospitals from outpatient data</rdfs:comment>
-    </owl:Ontology>
-	
-	
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-	
 	
     <!-- http://purl.obolibrary.org/obo/MEBDO_1001 -->
 
@@ -21580,4 +21542,4 @@
         <obo:BFO_0000171 rdf:resource="&obo;MEBDO_3004"/>
     </owl:NamedIndividual>
 
-</rdf:RDF>
+

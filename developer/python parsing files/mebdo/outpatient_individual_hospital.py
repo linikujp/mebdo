@@ -49,9 +49,9 @@
 
 """
 
-#hospital id will use 8+their id in the table. (ignor the reference region for the moment)
-# asign the column D (type:MEBDO_0000406), E(type:MEBDO_0000010), F(type: MEBDO_0000011), G(type:MEBDO_0000012) first, then assign the hospital (column C)
-# id starts from 1000
+## hospital id will use 8+their id in the table. (ignor the reference region for the moment)
+## asign the column D (type:MEBDO_0000406), E(type:MEBDO_0000010), F(type: MEBDO_0000011), G(type:MEBDO_0000012) first, then assign the hospital (column C)
+## id starts from 1000
 
 from openpyxl import load_workbook
 
