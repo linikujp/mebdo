@@ -72,22 +72,26 @@ for i in range(8, 509):
     updateFile = open('mebdo_APC_hospital_individual.owl','a')
     
     streetId = str(varId)
-    updateFile.write('    <!-- http://purl.obolibrary.org/obo/MEBDO_' + str(varId))
+    n = len(streetId)
+    streetId7digits = "0" * (7-n) + streetId 
+    updateFile.write('    <!-- http://purl.obolibrary.org/obo/MEBDO_' + streetId7didgits)
     updateFile.write(' -->\n\n')
-    updateFile.write('    <owl:NamedIndividual rdf:about="&obo;MEBDO_'+ str(varId) + '">\n')
+    updateFile.write('    <owl:NamedIndividual rdf:about="&obo;MEBDO_'+ streetId7didgits + '">\n')
     updateFile.write('        <rdf:type rdf:resource="&obo;MEBDO_0000406"/>\n')
     updateFile.write('        <rdfs:label xml:lang="en">'+ streetAddress )
-    updateFile.write('</rdfs:label\n>')
+    updateFile.write('</rdfs:label>\n')
     updateFile.write('    </owl:NamedIndividual>\n\n')
+    
     varId = varId + 1
     cityId = str(varId)
-    updateFile.write('    <!-- http://purl.obolibrary.org/obo/MEBDO_' + str(varId))
+    updateFile.write('    <!-- http://purl.obolibrary.org/obo/MEBDO_' + cityId7digits)
     updateFile.write(' -->\n\n')
-    updateFile.write('    <owl:NamedIndividual rdf:about="&obo;MEBDO_'+ str(varId) + '">\n')
+    updateFile.write('    <owl:NamedIndividual rdf:about="&obo;MEBDO_'+ cityId7digits + '">\n')
     updateFile.write('        <rdf:type rdf:resource="&obo;MEBDO_0000010"/>\n')
     updateFile.write('        <rdfs:label xml:lang="en">'+ city )
     updateFile.write('</rdfs:label\n>')
     updateFile.write('    </owl:NamedIndividual>\n\n\n')
+    
     varId = varId + 1
     stateId = str(varId)
     updateFile.write('    <!-- http://purl.obolibrary.org/obo/MEBDO_' + str(varId))
@@ -95,7 +99,7 @@ for i in range(8, 509):
     updateFile.write('    <owl:NamedIndividual rdf:about="&obo;MEBDO_'+ str(varId) + '">\n')
     updateFile.write('        <rdf:type rdf:resource="&obo;MEBDO_0000011"/>\n')
     updateFile.write('        <rdfs:label xml:lang="en">'+ state )
-    updateFile.write('</rdfs:label\n>')
+    updateFile.write('</rdfs:label>\n')
     updateFile.write('    </owl:NamedIndividual>\n\n\n')
     varId = varId + 1
     zipId = str(varId)
@@ -104,7 +108,7 @@ for i in range(8, 509):
     updateFile.write('    <owl:NamedIndividual rdf:about="&obo;MEBDO_'+ zipId + '">\n')
     updateFile.write('        <rdf:type rdf:resource="&obo;MEBDO_0000012"/>\n')
     updateFile.write('        <rdfs:label xml:lang="en">'+ str(zip) )
-    updateFile.write('</rdfs:label\n>')
+    updateFile.write('</rdfs:label>\n')
     updateFile.write('    </owl:NamedIndividual>\n\n\n')
     
     hospitalId = '8' + str(hospitalId)
@@ -112,7 +116,7 @@ for i in range(8, 509):
     updateFile.write('    <owl:NamedIndividual rdf:about="&obo;MEBDO_'+ hospitalId + '">\n')
     updateFile.write('        <rdf:type rdf:resource="&obo;MEBDO_0000001"/>\n')
     updateFile.write('        <rdfs:label xml:lang="en">'+ hospital +'</rdfs:label>\n')
-    updateFile.write('        <obo:MEBDO_0000407 rdf:resource="&obo;MEBDO_'+ streetId + '"/>\n')
+    updateFile.write('        <obo:MEBDO_0000407 rdf:resource="&obo;MEBDO_'+ streetId7digits + '"/>\n')
     updateFile.write('        <obo:BFO_0000171 rdf:resource="&obo;MEBDO_'+ cityId +'"/>\n')
     updateFile.write('        <obo:BFO_0000171 rdf:resource="&obo;MEBDO_'+ stateId +'"/>\n')
     updateFile.write('        <obo:BFO_0000171 rdf:resource="&obo;MEBDO_'+ zipId +'"/>\n')

@@ -2,7 +2,8 @@
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/mebdo_hospital_indivudial.owl" uri="file:/C:/Users/yuln/Documents/mebdo/developer/python%20parsing%20files/mebdo/mebdo_APC_hospital_individual.owl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1420783197519" name="http://purl.obolibrary.org/obo/mebdo.owl" uri="mebdo.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1420783197519" name="http://purl.obolibrary.org/obo/medbo/OMRSE_import.owl" uri="OMRSE_import.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1421383333564" name="http://purl.obolibrar.org/obo/mebdo_inferred.owl" uri="mebdo_inferred.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1421383333564" name="http://purl.obolibrary.org/obo/mebdo.owl" uri="mebdo.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1421383333564" name="http://purl.obolibrary.org/obo/medbo/OMRSE_import.owl" uri="OMRSE_import.owl"/>
     </group>
 </catalog>
