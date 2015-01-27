@@ -1,0 +1,20 @@
+outpatient individual starts from 9000000
+inpatient individual starts from 7000000
+hospital individual form '8' + hospital ID
+street ID starts from 1000, and then make it to 7 digits
+city, state, and zip were starts from 10000, but didn't make it to 7 digits, since we will have an individual file for city, state and zip seperately.
+
+APC : add '272' + code
+DRG : 374 0[4-n] code ; n = length of the string
+
+
+
+
+adding file:
+APC_new for class
+APC hospital individual 
+APC payment individual
+MSDRG for class
+DRG payment individual
+
+

@@ -1,0 +1,714 @@
+@prefix : <http://purl.obolibrary.org/obo/mebdo.owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@base <http://purl.obolibrary.org/obo/hosp.owl> .
+
+<http://purl.obolibrary.org/obo/hosp.owl> rdf:type owl:Ontology ;
+                                          
+                                          dc:contributor "Asiyah Yu Lin (YL)"@en ;
+                                          
+                                          rdfs:comment "The data to be integrated from Medicare is the MedPAR data ()Medicare Provider Analysis and Review) from the CMS webstie." ;
+                                          
+                                          obo:IAO_0000115 "This is the ontology for medicare big data project"@en ;
+                                          
+                                          owl:imports <http://purl.obolibrary.org/obo/bfo/2014-05-03/bfo.owl> ,
+                                                      <http://purl.obolibrary.org/obo/medbo/OMRSE_import.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000034
+
+obo:MEBDO_0000034 rdf:type owl:AnnotationProperty ;
+                  
+                  rdfs:label "APC code"@en .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000039
+
+obo:MEBDO_0000039 rdf:type owl:AnnotationProperty ;
+                  
+                  rdfs:label "MS-DRG code"@en .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000023
+
+obo:MEBDO_0000023 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "ZIP_mapping_to_FIPS"@en ;
+                  
+                  obo:IAO_0000115 "THis relation is used for the mapping bettween a zip code zrea and a FIPS code area. Normally a FIPS code has 1:1 relation to a county. But Zip code dosen't. THe boundary of a ZIP code zone may located_in or overlaps with the boundary of a FIPS code zone. So here we use 'mapping' to reflect this relation." ;
+                  
+                  obo:IAO_0000117 "YL"@en ;
+                  
+                  owl:inverseOf obo:MEBDO_0000024 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000024
+
+obo:MEBDO_0000024 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "FIPS_mapping_to_ZIP"@en ;
+                  
+                  obo:IAO_0000117 "YL"@en ;
+                  
+                  obo:IAO_0000115 "see definition of 'ZIP_mapping_to_FIPS'"@en .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000025
+
+obo:MEBDO_0000025 rdf:type owl:FunctionalProperty ,
+                           owl:ObjectProperty ;
+                  
+                  rdfs:label "located_in_FIPS_area"@en ;
+                  
+                  obo:IAO_0000115 "According to FIPS code's defintion, each state and county will assign one and only one FIPS code at a time. This relation can be express as: 'located in at all times' only 'FIPS code area' and 'located in at all time exactly 1 'FIPS code area'. We set this relation as functional, so it may capture the essence of this relation"@en ;
+                  
+                  obo:IAO_0000117 "YL"@en ;
+                  
+                  rdfs:subPropertyOf obo:BFO_0000082 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000026
+
+obo:MEBDO_0000026 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "Medicare service provided by"@en ;
+                  
+                  obo:IAO_0000115 "a short relation between a 'medicare service' and a 'medicare service provider'. 'Medicare service' realizes some 'Medicare service provider role' and ( 'role of at all times' some 'Medicare service provider')"@en .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000048
+
+obo:MEBDO_0000048 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "Medicare service provided in"@en ;
+                  
+                  owl:propertyChainAxiom ( obo:MEBDO_0000026
+                                           obo:BFO_0000171
+                                         ) .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000407
+
+obo:MEBDO_0000407 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "hasStreetAddress"@en ;
+                  
+                  rdfs:range obo:MEBDO_0000406 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000414
+
+obo:MEBDO_0000414 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "hasPaymentOrCharge"@en ;
+                  
+                  rdfs:range obo:MEBDO_0000413 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000417
+
+obo:MEBDO_0000417 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "hasTotalServiceCount"@en ;
+                  
+                  rdfs:range obo:MEBDO_0000027 .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000028
+
+obo:MEBDO_0000028 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "hasYear"@en .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000001
+
+obo:MEBDO_0000001 rdf:type owl:Class ;
+                  
+                  rdfs:label "Medicare certified hospital facility"@en ;
+                  
+                  owl:equivalentClass [ rdf:type owl:Class ;
+                                        owl:intersectionOf ( <http://purl.obolibrary.org/obo/hosp.owl/MEBDO_0000001>
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty obo:BFO_0000087 ;
+                                                               owl:someValuesFrom obo:MEBDO_0000006
+                                                             ]
+                                                           )
+                                      ] ;
+                  
+                  rdfs:subClassOf <http://purl.obolibrary.org/obo/hosp.owl/MEBDO_0000001> .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000002
+
+obo:MEBDO_0000002 rdf:type owl:Class ;
+                  
+                  rdfs:label "Medicare certified physician"@en ;
+                  
+                  rdfs:subClassOf obo:NCBITaxon_9606 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty obo:BFO_0000087 ;
+                                    owl:someValuesFrom obo:MEBDO_0000006
+                                  ] ;
+                  
+                  obo:IAO_0000117 "YL" .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000003
+
+obo:MEBDO_0000003 rdf:type owl:Class ;
+                  
+                  rdfs:label "Medicare enrolled pateint"@en ;
+                  
+                  rdfs:subClassOf obo:NCBITaxon_9606 ;
+                  
+                  obo:IAO_0000118 "Medicare beneficiary" ;
+                  
+                  obo:IAO_0000115 "Medicare beneficiary means an individual who is entitled to benefits under medicare part A plan and enrolled under medicare part B plan or enrolled in both medicare part A and part B plan and who resides in the U.S. Medicare beneficiaries pay deductibles and 20 percent coinsurance for most services and equipment. When a health services provider bills medicare, it agrees to accept the amount that medicare will pay, and that once medicare is billed a medicare beneficiary will not be charged either directly or indirectly for items or services that the beneficiary is entitled to have paid" ;
+                  
+                  obo:IAO_0000119 "http://definitions.uslegal.com/m/medicare-beneficiary/" ;
+                  
+                  obo:IAO_0000117 "YL" .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000006
+
+obo:MEBDO_0000006 rdf:type owl:Class ;
+                  
+                  rdfs:label "Medicare service provider role"@en ;
+                  
+                  rdfs:subClassOf obo:OMRSE_00000012 ;
+                  
+                  obo:IAO_0000117 "YL" ;
+                  
+                  obo:IAO_0000115 "A human health care role inhering in an organization or human being that is realized by a process of providing medicare services to a human being." .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000010
+
+obo:MEBDO_0000010 rdf:type owl:Class ;
+                  
+                  rdfs:label "city"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000016 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty obo:BFO_0000176 ;
+                                    owl:someValuesFrom obo:MEBDO_0000011
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty obo:BFO_0000176 ;
+                                    owl:someValuesFrom obo:MEBDO_0000015
+                                  ] .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000011
+
+obo:MEBDO_0000011 rdf:type owl:Class ;
+                  
+                  rdfs:label "state"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000016 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty obo:BFO_0000176 ;
+                                    owl:someValuesFrom obo:MEBDO_0000020
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty obo:MEBDO_0000025 ;
+                                    owl:someValuesFrom obo:MEBDO_0000013
+                                  ] ;
+                  
+                  obo:IAO_0000115 "A state of the United States of America is one of the 50 constituent political entities that shares its sovereignty with the United States federal government"@en ;
+                  
+                  obo:IAO_0000117 "YL"@en ;
+                  
+                  obo:IAO_0000119 "http://en.wikipedia.org/wiki/U.S._state"@en .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000012
+
+obo:MEBDO_0000012 rdf:type owl:Class ;
+                  
+                  rdfs:label "zip code zone"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000014 ;
+                  
+                  rdfs:comment """Despite the geographic derivation of most ZIP codes, the codes themselves do not represent geographic regions; in general, they correspond to address groups or delivery routes. As a consequence, ZIP code \"areas\" can overlap, be subsets of each other, or be artificial constructs with no geographic area (such as 095 for mail to the Navy, which is not geographically fixed). In similar fashion, in areas without regular postal routes (rural route areas) or no mail delivery (undeveloped areas), ZIP codes are not assigned or are based on sparse delivery routes, and hence the boundary between ZIP code areas is undefined.
+(http://en.wikipedia.org/wiki/ZIP_code#By_geography)""" ;
+                  
+                  obo:IAO_0000117 "YL" .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000013
+
+obo:MEBDO_0000013 rdf:type owl:Class ;
+                  
+                  rdfs:label "fips code area"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000014 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty obo:MEBDO_0000024 ;
+                                    owl:someValuesFrom obo:MEBDO_0000012
+                                  ] .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000014
+
+obo:MEBDO_0000014 rdf:type owl:Class ;
+                  
+                  rdfs:label "geographical region"@en ;
+                  
+                  rdfs:subClassOf obo:BFO_0000141 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000015
+
+obo:MEBDO_0000015 rdf:type owl:Class ;
+                  
+                  rdfs:label "county"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000016 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty obo:MEBDO_0000025 ;
+                                    owl:someValuesFrom obo:MEBDO_0000013
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty obo:BFO_0000176 ;
+                                    owl:someValuesFrom obo:MEBDO_0000011
+                                  ] ;
+                  
+                  obo:IAO_0000115 "A county is a political and geographic subdivision of a state, usually assigned some governmental authority"@en ;
+                  
+                  obo:IAO_0000117 "YL"@en ;
+                  
+                  obo:IAO_0000119 "http://en.wikipedia.org/wiki/County_%28United_States%29"@en .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000016
+
+obo:MEBDO_0000016 rdf:type owl:Class ;
+                  
+                  rdfs:label "political and geographical entity"@en ;
+                  
+                  rdfs:subClassOf obo:BFO_0000040 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000017
+
+obo:MEBDO_0000017 rdf:type owl:Class ;
+                  
+                  rdfs:label "Medicare provider's service charge"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000413 ;
+                  
+                  rdfs:comment "This is the money that provider charges patient or insurance company" ;
+                  
+                  obo:IAO_0000115 "The demand (an amount) as a price from provider for a medicare service." ;
+                  
+                  rdfs:comment "This term is for the CMS data 'average coverd charge'."@en ;
+                  
+                  obo:IAO_0000117 "YL"@en .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000018
+
+obo:MEBDO_0000018 rdf:type owl:Class ;
+                  
+                  rdfs:label "hospital referral region"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000014 ;
+                  
+                  obo:IAO_0000115 """A Hospital Referral Region (HRR) is a regional health care market for specialized consultative care, where caring for the patient requires the services of a major referral center. The regions were defined based on patient referrals for major cardiovascular surgery and for neurosurgery. Each HRR contains at least one hospital that performs major procedures in both categories. (HRRs sometimes cross state boundaries. The Evansville, Ind., HHR area, for example, crosses over into Illinois and Kentucky.)
+
+HRRs were created by The Dartmouth Atlas of Health Care as a convenient way of slicing data and showing trends and disparities in health care across the United States. There are 306 HRRs.
+
+The broad and in-depth record-keeping of the Centers for Medicare & Medicaid Services (CMS) make HRRs possible. When a Medicare beneficiary is admitted to a hospital, his or her ZIP code is collected as well as the unique numerical identifier of the hospital where the admission takes place. These records provide a basis for understanding the geographic health care patterns of the entire country because research has shown that beneficiaries have migration patterns similar to younger patients.""" ;
+                  
+                  obo:IAO_0000119 "http://www.medicarenewsdigest.com/Pages/FAQ.aspx?id=47705296-5643-6f71-bd80-ff0000115b4a" ;
+                  
+                  obo:IAO_0000117 "YL" .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000019
+
+obo:MEBDO_0000019 rdf:type owl:Class ;
+                  
+                  rdfs:label "Medicare"@en ;
+                  
+                  rdfs:subClassOf obo:BFO_0000031 ;
+                  
+                  obo:IAO_0000117 "YL" ;
+                  
+                  obo:IAO_0000115 "Medicare  is the federal health insurance program for persons 65 and older and certain disabled persons in US."@en ;
+                  
+                  obo:IAO_0000119 "http://medicare.uslegal.com/"@en .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000020
+
+obo:MEBDO_0000020 rdf:type owl:Class ;
+                  
+                  rdfs:label "country"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000016 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000021
+
+obo:MEBDO_0000021 rdf:type owl:Class ;
+                  
+                  rdfs:label "Medicare payment to provider"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000017 ;
+                  
+                  rdfs:comment "This is the money that provider recieves from Medicare insurance program." ;
+                  
+                  obo:IAO_0000118 "Medicare reimbursement to provider"@en ;
+                  
+                  rdfs:comment "The Medicare payment includes service amount, teaching,disproportionate share, capital, and outlier payments"@en ;
+                  
+                  obo:IAO_0000115 "The amount that Medicare pays to a provider to cover its expense for a Medicare service.Medicare payments DO NOT include beneficiary co-payments and deductible amounts nor any additional payments from third parties for coordination of benefits."@en ;
+                  
+                  obo:IAO_0000117 "YL"@en .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000022
+
+obo:MEBDO_0000022 rdf:type owl:Class ;
+                  
+                  rdfs:label "Total payment to provider"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000413 ;
+                  
+                  rdfs:comment "This is the money that provider receives from Medicare, thrid party and patient" ;
+                  
+                  obo:IAO_0000115 "The amount that a provider received to cover its expense for a Medicare service.It includes Medicare payments, beneficiary co-payments and deductible amounts and any additional payments from third parties for coordination of benefits."@en ;
+                  
+                  obo:IAO_0000117 "YL"@en .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000027
+
+obo:MEBDO_0000027 rdf:type owl:Class ;
+                  
+                  rdfs:label "total of Medicare service conducted at a time period"@en ;
+                  
+                  rdfs:subClassOf obo:BFO_0000031 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty obo:MEBDO_0000028 ;
+                                    owl:someValuesFrom xsd:integer
+                                  ] ;
+                  
+                  obo:IAO_0000115 "The total of a certai Medicare service conducted by a provider at a time period."@en ;
+                  
+                  obo:IAO_0000112 "Total discharge of the inpatient care of one DRG group at 2012 in PUF file from CMS data center."@en ;
+                  
+                  obo:IAO_0000117 "YL"@en .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000031
+
+obo:MEBDO_0000031 rdf:type owl:Class ;
+                  
+                  rdfs:label "Medicare provider's service charge of inpatient service"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000017 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000032
+
+obo:MEBDO_0000032 rdf:type owl:Class ;
+                  
+                  rdfs:label "Medicare provider's service charge of outpatient service"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000017 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty obo:MEBDO_0000028 ;
+                                    owl:allValuesFrom xsd:int
+                                  ] .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000033
+
+obo:MEBDO_0000033 rdf:type owl:Class ;
+                  
+                  rdfs:label "outpatient payment from Medicare to provider"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000021 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000042
+
+obo:MEBDO_0000042 rdf:type owl:Class ;
+                  
+                  rdfs:label "Total discharge of inpatient at FY2012"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000027 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000045
+
+obo:MEBDO_0000045 rdf:type owl:Class ;
+                  
+                  rdfs:label "average total payment at FY2012"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000408 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000047
+
+obo:MEBDO_0000047 rdf:type owl:Class ;
+                  
+                  rdfs:label "average inpatient Medicare payment at FY2012"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000405 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000405
+
+obo:MEBDO_0000405 rdf:type owl:Class ;
+                  
+                  rdfs:label "inpatient payment from Medicare to provider"@en ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000021 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000406
+
+obo:MEBDO_0000406 rdf:type owl:Class ;
+                  
+                  rdfs:label "street address"@en ;
+                  
+                  rdfs:subClassOf obo:BFO_0000031 .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000408
+
+obo:MEBDO_0000408 rdf:type owl:Class ;
+                  
+                  rdfs:label "average total payment at a time period" ;
+                  
+                  rdfs:subClassOf obo:MEBDO_0000022 ;
+                  
+                  rdfs:comment "corresponding to the APC table column K... Maybe th payment from medicare to provider. we need to check the document." .
+
+
+
+###  http://purl.obolibrary.org/obo/MEBDO_0000413
+
+obo:MEBDO_0000413 rdf:type owl:Class ;
+                  
+                  rdfs:label "payment and charge"@en ;
+                  
+                  rdfs:subClassOf obo:BFO_0000031 .
+
+
+
+###  http://purl.obolibrary.org/obo/NCBITaxon_9606
+
+obo:NCBITaxon_9606 rdfs:subClassOf obo:BFO_0000040 .
+
+
+
+###  http://purl.obolibrary.org/obo/OBI_0000245
+
+obo:OBI_0000245 rdfs:subClassOf obo:BFO_0000040 .
+
+
+
+###  http://purl.obolibrary.org/obo/OMRSE_00000012
+
+obo:OMRSE_00000012 rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf obo:BFO_0000023 .
+
+
+
+###  http://purl.obolibrary.org/obo/hosp.owl/MEBDO_0000001
+
+<http://purl.obolibrary.org/obo/hosp.owl/MEBDO_0000001> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "hospital"@en ;
+                                                        
+                                                        rdfs:subClassOf obo:OBI_0000245 ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty obo:BFO_0000171 ;
+                                                                          owl:someValuesFrom obo:MEBDO_0000011
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty obo:BFO_0000171 ;
+                                                                          owl:someValuesFrom obo:MEBDO_0000012
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty obo:BFO_0000171 ;
+                                                                          owl:someValuesFrom obo:MEBDO_0000018
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty obo:BFO_0000087 ;
+                                                                          owl:someValuesFrom obo:OMRSE_00000012
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty obo:BFO_0000171 ;
+                                                                          owl:someValuesFrom obo:MEBDO_0000010
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty obo:MEBDO_0000407 ;
+                                                                          owl:someValuesFrom obo:MEBDO_0000406
+                                                                        ] ;
+                                                        
+                                                        obo:IAO_0000117 "YL" .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://purl.obolibrary.org/obo/HOPS_0000001
+
+obo:MIAGO_0000001 rdf:type owl:NamedIndividual ;
+                  
+                  rdfs:label "hosptial1"@en .
+
+
+
+
+
+#################################################################
+#
+#    Rules
+#
+#################################################################
+
+
+<urn:swrl#a> rdf:type swrl:Variable .
+<urn:swrl#b> rdf:type swrl:Variable .
+<urn:swrl#c> rdf:type swrl:Variable .
+[ rdf:type swrl:Imp ;
+  swrl:head [ rdf:type swrl:AtomList ;
+              rdf:rest rdf:nil ;
+              rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                          swrl:propertyPredicate obo:BFO_0000171 ;
+                          swrl:argument1 <urn:swrl#b> ;
+                          swrl:argument2 <urn:swrl#c>
+                        ]
+            ] ;
+  swrl:body [ rdf:type swrl:AtomList ;
+              rdf:rest [ rdf:type swrl:AtomList ;
+                         rdf:first [ rdf:type swrl:ClassAtom ;
+                                     swrl:classPredicate obo:MEBDO_0000011 ;
+                                     swrl:argument1 <urn:swrl#c>
+                                   ] ;
+                         rdf:rest [ rdf:type swrl:AtomList ;
+                                    rdf:first [ rdf:type swrl:ClassAtom ;
+                                                swrl:classPredicate <http://purl.obolibrary.org/obo/hosp.owl/MEBDO_0000001> ;
+                                                swrl:argument1 <urn:swrl#a>
+                                              ] ;
+                                    rdf:rest [ rdf:type swrl:AtomList ;
+                                               rdf:rest [ rdf:type swrl:AtomList ;
+                                                          rdf:rest rdf:nil ;
+                                                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                                                      swrl:classPredicate obo:MEBDO_0000010 ;
+                                                                      swrl:argument1 <urn:swrl#b>
+                                                                    ]
+                                                        ] ;
+                                               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                           swrl:propertyPredicate obo:BFO_0000171 ;
+                                                           swrl:argument1 <urn:swrl#a> ;
+                                                           swrl:argument2 <urn:swrl#c>
+                                                         ]
+                                             ]
+                                  ]
+                       ] ;
+              rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                          swrl:propertyPredicate obo:BFO_0000171 ;
+                          swrl:argument1 <urn:swrl#a> ;
+                          swrl:argument2 <urn:swrl#b>
+                        ]
+            ]
+] .
+
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+
