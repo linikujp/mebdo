@@ -13,12 +13,12 @@
 
 <rdf:RDF xmlns="&obo;mebdo.owl#"
      xml:base="&obo;mebdo.owl"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:obo="http://purl.obolibrary.org/obo/"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="&obo;mebdo.owl">
         <dc:contributor xml:lang="en">Asiyah Yu Lin (YL)</dc:contributor>
         <rdfs:comment>The data to be integrated from Medicare is the MedPAR data ()Medicare Provider Analysis and Review) from the CMS webstie.</rdfs:comment>
@@ -64,7 +64,10 @@
     <owl:ObjectProperty rdf:about="&obo;MEBDO_0000023">
         <rdfs:label xml:lang="en">ZIP_mapping_to_FIPS</rdfs:label>
         <obo:IAO_0000115>THis relation is used for the mapping bettween a zip code zrea and a FIPS code area. Normally a FIPS code has 1:1 relation to a county. But Zip code dosen&apos;t. THe boundary of a ZIP code zone may located_in or overlaps with the boundary of a FIPS code zone. So here we use &apos;mapping&apos; to reflect this relation.</obo:IAO_0000115>
+        <rdfs:comment xml:lang="en">The label may change to existing relations in YAGO or RO, such as overlaps , which is super class of located within.</rdfs:comment>
         <obo:IAO_0000117 xml:lang="en">YL</obo:IAO_0000117>
+        <rdfs:domain rdf:resource="&obo;MEBDO_0000012"/>
+        <rdfs:range rdf:resource="&obo;MEBDO_0000013"/>
         <owl:inverseOf rdf:resource="&obo;MEBDO_0000024"/>
     </owl:ObjectProperty>
     
@@ -76,6 +79,8 @@
         <rdfs:label xml:lang="en">FIPS_mapping_to_ZIP</rdfs:label>
         <obo:IAO_0000117 xml:lang="en">YL</obo:IAO_0000117>
         <obo:IAO_0000115 xml:lang="en">see definition of &apos;ZIP_mapping_to_FIPS&apos;</obo:IAO_0000115>
+        <rdfs:range rdf:resource="&obo;MEBDO_0000012"/>
+        <rdfs:domain rdf:resource="&obo;MEBDO_0000013"/>
     </owl:ObjectProperty>
     
 
@@ -99,6 +104,26 @@
         <obo:IAO_0000115 xml:lang="en">a short relation between a &apos;medicare service&apos; and a &apos;medicare service provider&apos;. &apos;Medicare service&apos; realizes some &apos;Medicare service provider role&apos; and ( &apos;role of at all times&apos; some &apos;Medicare service provider&apos;)</obo:IAO_0000115>
         <rdfs:domain rdf:resource="&obo;MEBDO_0000009"/>
         <rdfs:range rdf:resource="http://purl.obolibrary.org/obol/MEBDO_0000005"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_0000410 -->
+
+    <owl:ObjectProperty rdf:about="&obo;MEBDO_0000410">
+        <rdfs:label xml:lang="en">occupies zipcode zone</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000083"/>
+        <rdfs:range rdf:resource="&obo;MEBDO_0000012"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_0000411 -->
+
+    <owl:ObjectProperty rdf:about="&obo;MEBDO_0000411">
+        <rdfs:label xml:lang="en">occupies FIPS code area</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000083"/>
+        <rdfs:range rdf:resource="&obo;MEBDO_0000013"/>
     </owl:ObjectProperty>
     
 
@@ -176,8 +201,8 @@
         <rdfs:label xml:lang="en">Medicare enrolled pateint</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9606"/>
         <obo:IAO_0000118>Medicare beneficiary</obo:IAO_0000118>
-        <obo:IAO_0000115>Medicare beneficiary means an individual who is entitled to benefits under medicare part A plan and enrolled under medicare part B plan or enrolled in both medicare part A and part B plan and who resides in the U.S. Medicare beneficiaries pay deductibles and 20 percent coinsurance for most services and equipment. When a health services provider bills medicare, it agrees to accept the amount that medicare will pay, and that once medicare is billed a medicare beneficiary will not be charged either directly or indirectly for items or services that the beneficiary is entitled to have paid</obo:IAO_0000115>
         <obo:IAO_0000119>http://definitions.uslegal.com/m/medicare-beneficiary/</obo:IAO_0000119>
+        <obo:IAO_0000115>Medicare beneficiary means an individual who is entitled to benefits under medicare part A plan and enrolled under medicare part B plan or enrolled in both medicare part A and part B plan and who resides in the U.S. Medicare beneficiaries pay deductibles and 20 percent coinsurance for most services and equipment. When a health services provider bills medicare, it agrees to accept the amount that medicare will pay, and that once medicare is billed a medicare beneficiary will not be charged either directly or indirectly for items or services that the beneficiary is entitled to have paid</obo:IAO_0000115>
         <obo:IAO_0000117>YL</obo:IAO_0000117>
     </owl:Class>
     
@@ -270,13 +295,13 @@ Read more : http://www.ehow.com/about_4650731_definition-health-care-provider.ht
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000015"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000015"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -344,14 +369,14 @@ Read more : http://www.ehow.com/about_4650731_definition-health-care-provider.ht
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000016"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
+                <owl:onProperty rdf:resource="&obo;MEBDO_0000025"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000013"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;MEBDO_0000025"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000013"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A county is a political and geographic subdivision of a state, usually assigned some governmental authority</obo:IAO_0000115>
@@ -392,8 +417,8 @@ Read more : http://www.ehow.com/about_4650731_definition-health-care-provider.ht
 HRRs were created by The Dartmouth Atlas of Health Care as a convenient way of slicing data and showing trends and disparities in health care across the United States. There are 306 HRRs.
 
 The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid Services (CMS) make HRRs possible. When a Medicare beneficiary is admitted to a hospital, his or her ZIP code is collected as well as the unique numerical identifier of the hospital where the admission takes place. These records provide a basis for understanding the geographic health care patterns of the entire country because research has shown that beneficiaries have migration patterns similar to younger patients.</obo:IAO_0000115>
-        <obo:IAO_0000119>http://www.medicarenewsdigest.com/Pages/FAQ.aspx?id=47705296-5643-6f71-bd80-ff0000115b4a</obo:IAO_0000119>
         <obo:IAO_0000117>YL</obo:IAO_0000117>
+        <obo:IAO_0000119>http://www.medicarenewsdigest.com/Pages/FAQ.aspx?id=47705296-5643-6f71-bd80-ff0000115b4a</obo:IAO_0000119>
     </owl:Class>
     
 
@@ -403,8 +428,8 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
     <owl:Class rdf:about="&obo;MEBDO_0000019">
         <rdfs:label xml:lang="en">Medicare</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000031"/>
-        <obo:IAO_0000117>YL</obo:IAO_0000117>
         <obo:IAO_0000115 xml:lang="en">Medicare  is the federal health insurance program for persons 65 and older and certain disabled persons in US.</obo:IAO_0000115>
+        <obo:IAO_0000117>YL</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">http://medicare.uslegal.com/</obo:IAO_0000119>
     </owl:Class>
     
@@ -506,6 +531,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
     </owl:Class>
     
 
+
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000036 -->
 
     <owl:Class rdf:about="&obo;MEBDO_0000036">
@@ -513,6 +539,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0002</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000037 -->
@@ -522,6 +549,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0003</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000038 -->
@@ -531,6 +559,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0004</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000039 -->
@@ -540,6 +569,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0005</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000040 -->
@@ -549,6 +579,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0006</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000041 -->
@@ -558,6 +589,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0007</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000042 -->
@@ -567,6 +599,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0008</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000043 -->
@@ -576,6 +609,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0012</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000044 -->
@@ -585,6 +619,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0013</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000045 -->
@@ -594,6 +629,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0015</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000046 -->
@@ -603,6 +639,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0016</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000047 -->
@@ -612,6 +649,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0017</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000048 -->
@@ -621,6 +659,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0019</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000049 -->
@@ -630,6 +669,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0020</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000050 -->
@@ -639,6 +679,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0021</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000051 -->
@@ -648,6 +689,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0022</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000052 -->
@@ -657,6 +699,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0028</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000053 -->
@@ -666,6 +709,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0029</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000054 -->
@@ -675,6 +719,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0030</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000055 -->
@@ -684,6 +729,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0031</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000056 -->
@@ -693,6 +739,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0035</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000057 -->
@@ -702,6 +749,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0037</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000058 -->
@@ -711,6 +759,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0039</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000059 -->
@@ -720,6 +769,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0040</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000060 -->
@@ -729,6 +779,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0041</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000061 -->
@@ -738,6 +789,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0042</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000062 -->
@@ -747,6 +799,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0045</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000063 -->
@@ -756,6 +809,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0047</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000064 -->
@@ -765,6 +819,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0048</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000065 -->
@@ -774,6 +829,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0049</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000066 -->
@@ -783,6 +839,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0050</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000067 -->
@@ -792,6 +849,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0051</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000068 -->
@@ -801,6 +859,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0052</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000069 -->
@@ -810,6 +869,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0053</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000070 -->
@@ -819,6 +879,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0054</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000071 -->
@@ -828,6 +889,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0055</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000072 -->
@@ -837,6 +899,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0056</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000073 -->
@@ -846,6 +909,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0057</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000074 -->
@@ -855,6 +919,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0058</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000075 -->
@@ -864,6 +929,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0059</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000076 -->
@@ -873,6 +939,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0060</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000077 -->
@@ -882,6 +949,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0061</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000078 -->
@@ -891,6 +959,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0062</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000079 -->
@@ -900,6 +969,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0063</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000080 -->
@@ -909,6 +979,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0064</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000081 -->
@@ -918,6 +989,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0065</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000082 -->
@@ -927,6 +999,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0066</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000083 -->
@@ -936,6 +1009,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0067</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000084 -->
@@ -945,6 +1019,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0069</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000085 -->
@@ -954,6 +1029,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0070</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000086 -->
@@ -963,6 +1039,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0071</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000087 -->
@@ -972,6 +1049,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0072</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000088 -->
@@ -981,6 +1059,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0073</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000089 -->
@@ -990,6 +1069,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0074</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000090 -->
@@ -999,6 +1079,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0075</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000091 -->
@@ -1008,6 +1089,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0076</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000092 -->
@@ -1017,6 +1099,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0077</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000093 -->
@@ -1026,6 +1109,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0078</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000094 -->
@@ -1035,6 +1119,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0079</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000095 -->
@@ -1044,6 +1129,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0080</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000096 -->
@@ -1053,6 +1139,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0082</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000097 -->
@@ -1062,6 +1149,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0083</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000098 -->
@@ -1071,6 +1159,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0084</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000099 -->
@@ -1080,6 +1169,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0085</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000100 -->
@@ -1089,6 +1179,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0086</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000101 -->
@@ -1098,6 +1189,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0088</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000102 -->
@@ -1107,6 +1199,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0089</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000103 -->
@@ -1116,6 +1209,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0090</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000104 -->
@@ -1125,6 +1219,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0091</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000105 -->
@@ -1134,6 +1229,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0092</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000106 -->
@@ -1143,6 +1239,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0093</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000107 -->
@@ -1152,6 +1249,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0094</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000108 -->
@@ -1161,6 +1259,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0095</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000109 -->
@@ -1170,6 +1269,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0096</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000110 -->
@@ -1179,6 +1279,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0097</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000111 -->
@@ -1188,6 +1289,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0099</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000112 -->
@@ -1197,6 +1299,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0100</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000113 -->
@@ -1206,6 +1309,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0101</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000114 -->
@@ -1215,6 +1319,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0102</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000115 -->
@@ -1224,6 +1329,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0103</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000116 -->
@@ -1233,6 +1339,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0104</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000117 -->
@@ -1242,6 +1349,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0105</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000118 -->
@@ -1251,6 +1359,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0106</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000119 -->
@@ -1260,6 +1369,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0107</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000120 -->
@@ -1269,6 +1379,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0108</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000121 -->
@@ -1278,6 +1389,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0110</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000122 -->
@@ -1287,6 +1399,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0111</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000123 -->
@@ -1296,6 +1409,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0112</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000124 -->
@@ -1305,6 +1419,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0113</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000125 -->
@@ -1314,6 +1429,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0114</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000126 -->
@@ -1323,6 +1439,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0115</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000127 -->
@@ -1332,6 +1449,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0121</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000128 -->
@@ -1341,6 +1459,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0126</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000129 -->
@@ -1350,6 +1469,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0127</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000130 -->
@@ -1359,6 +1479,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0129</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000131 -->
@@ -1368,6 +1489,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0130</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000132 -->
@@ -1377,6 +1499,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0131</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000133 -->
@@ -1386,6 +1509,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0132</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000134 -->
@@ -1395,6 +1519,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0133</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000135 -->
@@ -1404,6 +1529,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0134</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000136 -->
@@ -1413,6 +1539,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0135</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000137 -->
@@ -1422,6 +1549,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0136</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000138 -->
@@ -1431,6 +1559,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0137</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000139 -->
@@ -1440,6 +1569,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0138</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000140 -->
@@ -1449,6 +1579,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0139</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000141 -->
@@ -1458,6 +1589,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0140</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000142 -->
@@ -1467,6 +1599,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0141</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000143 -->
@@ -1476,6 +1609,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0142</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000144 -->
@@ -1485,6 +1619,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0143</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000145 -->
@@ -1494,6 +1629,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0146</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000146 -->
@@ -1503,6 +1639,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0147</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000147 -->
@@ -1512,6 +1649,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0148</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000148 -->
@@ -1521,6 +1659,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0149</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000149 -->
@@ -1530,6 +1669,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0150</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000150 -->
@@ -1539,6 +1679,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0151</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000151 -->
@@ -1548,6 +1689,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0152</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000152 -->
@@ -1557,6 +1699,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0153</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000153 -->
@@ -1566,6 +1709,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0154</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000154 -->
@@ -1575,6 +1719,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0155</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000155 -->
@@ -1584,6 +1729,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0156</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000156 -->
@@ -1593,6 +1739,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0157</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000157 -->
@@ -1602,6 +1749,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0158</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000158 -->
@@ -1611,6 +1759,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0159</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000159 -->
@@ -1620,6 +1769,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0160</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000160 -->
@@ -1629,6 +1779,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0161</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000161 -->
@@ -1638,6 +1789,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0162</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000162 -->
@@ -1647,6 +1799,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0163</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000163 -->
@@ -1656,6 +1809,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0164</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000164 -->
@@ -1665,6 +1819,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0165</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000165 -->
@@ -1674,6 +1829,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0166</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000166 -->
@@ -1683,6 +1839,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0168</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000167 -->
@@ -1692,6 +1849,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0169</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000168 -->
@@ -1701,6 +1859,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0170</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000169 -->
@@ -1710,6 +1869,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0174</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000170 -->
@@ -1719,6 +1879,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0177</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000171 -->
@@ -1728,6 +1889,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0178</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000172 -->
@@ -1737,6 +1899,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0181</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000173 -->
@@ -1746,6 +1909,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0183</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000174 -->
@@ -1755,6 +1919,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0184</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000175 -->
@@ -1764,6 +1929,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0188</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000176 -->
@@ -1773,6 +1939,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0189</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000177 -->
@@ -1782,6 +1949,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0190</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000178 -->
@@ -1791,6 +1959,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0191</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000179 -->
@@ -1800,6 +1969,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0192</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000180 -->
@@ -1809,6 +1979,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0193</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000181 -->
@@ -1818,6 +1989,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0195</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000182 -->
@@ -1827,6 +1999,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0202</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000183 -->
@@ -1836,6 +2009,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0203</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000184 -->
@@ -1845,6 +2019,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0204</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000185 -->
@@ -1854,6 +2029,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0206</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000186 -->
@@ -1863,6 +2039,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0207</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000187 -->
@@ -1872,6 +2049,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0208</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000188 -->
@@ -1881,6 +2059,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0209</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000189 -->
@@ -1890,6 +2069,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0213</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000190 -->
@@ -1899,6 +2079,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0215</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000191 -->
@@ -1908,6 +2089,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0216</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000192 -->
@@ -1917,6 +2099,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0218</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000193 -->
@@ -1926,6 +2109,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0220</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000194 -->
@@ -1935,6 +2119,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0221</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000195 -->
@@ -1944,6 +2129,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0224</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000196 -->
@@ -1953,6 +2139,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0227</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000197 -->
@@ -1962,6 +2149,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0229</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000198 -->
@@ -1971,6 +2159,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0230</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000199 -->
@@ -1980,6 +2169,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0231</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000200 -->
@@ -1989,6 +2179,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0232</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000201 -->
@@ -1998,6 +2189,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0233</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000202 -->
@@ -2007,6 +2199,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0234</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000203 -->
@@ -2016,6 +2209,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0235</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000204 -->
@@ -2025,6 +2219,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0237</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000205 -->
@@ -2034,6 +2229,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0238</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000206 -->
@@ -2043,6 +2239,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0239</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000207 -->
@@ -2052,6 +2249,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0240</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000208 -->
@@ -2061,6 +2259,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0241</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000209 -->
@@ -2070,6 +2269,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0242</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000210 -->
@@ -2079,6 +2279,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0243</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000211 -->
@@ -2088,6 +2289,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0244</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000212 -->
@@ -2097,6 +2299,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0246</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000213 -->
@@ -2106,6 +2309,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0247</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000214 -->
@@ -2115,6 +2319,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0249</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000215 -->
@@ -2124,6 +2329,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0250</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000216 -->
@@ -2133,6 +2339,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0251</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000217 -->
@@ -2142,6 +2349,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0252</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000218 -->
@@ -2151,6 +2359,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0253</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000219 -->
@@ -2160,6 +2369,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0254</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000220 -->
@@ -2169,6 +2379,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0255</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000221 -->
@@ -2178,6 +2389,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0256</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000222 -->
@@ -2187,6 +2399,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0259</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000223 -->
@@ -2196,6 +2409,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0260</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000224 -->
@@ -2205,6 +2419,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0261</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000225 -->
@@ -2214,6 +2429,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0262</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000226 -->
@@ -2223,6 +2439,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0263</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000227 -->
@@ -2232,6 +2449,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0265</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000228 -->
@@ -2241,6 +2459,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0266</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000229 -->
@@ -2250,6 +2469,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0267</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000230 -->
@@ -2259,6 +2479,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0269</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000231 -->
@@ -2268,6 +2489,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0270</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000232 -->
@@ -2277,6 +2499,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0272</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000233 -->
@@ -2286,6 +2509,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0274</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000234 -->
@@ -2295,6 +2519,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0275</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000235 -->
@@ -2304,6 +2529,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0276</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000236 -->
@@ -2313,6 +2539,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0277</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000237 -->
@@ -2322,6 +2549,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0278</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000238 -->
@@ -2331,6 +2559,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0279</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000239 -->
@@ -2340,6 +2569,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0280</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000240 -->
@@ -2349,6 +2579,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0282</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000241 -->
@@ -2358,6 +2589,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0283</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000242 -->
@@ -2367,6 +2599,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0284</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000243 -->
@@ -2376,6 +2609,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0288</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000244 -->
@@ -2385,6 +2619,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0293</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000245 -->
@@ -2394,6 +2629,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0299</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000246 -->
@@ -2403,6 +2639,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0300</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000247 -->
@@ -2412,6 +2649,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0301</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000248 -->
@@ -2421,6 +2659,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0303</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000249 -->
@@ -2430,6 +2669,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0304</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000250 -->
@@ -2439,6 +2679,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0305</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000251 -->
@@ -2448,6 +2689,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0308</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000252 -->
@@ -2457,6 +2699,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0310</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000253 -->
@@ -2466,6 +2709,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0312</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000254 -->
@@ -2475,6 +2719,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0313</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000255 -->
@@ -2484,6 +2729,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0315</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000256 -->
@@ -2493,6 +2739,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0317</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000257 -->
@@ -2502,6 +2749,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0318</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000258 -->
@@ -2511,6 +2759,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0319</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000259 -->
@@ -2520,6 +2769,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0320</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000260 -->
@@ -2529,6 +2779,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0322</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000261 -->
@@ -2538,6 +2789,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0323</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000262 -->
@@ -2547,6 +2799,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0324</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000263 -->
@@ -2556,6 +2809,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0325</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000264 -->
@@ -2565,6 +2819,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0330</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000265 -->
@@ -2574,6 +2829,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0331</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000266 -->
@@ -2583,6 +2839,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0332</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000267 -->
@@ -2592,6 +2849,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0333</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000268 -->
@@ -2601,6 +2859,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0334</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000269 -->
@@ -2610,6 +2869,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0336</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000270 -->
@@ -2619,6 +2879,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0337</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000271 -->
@@ -2628,6 +2889,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0340</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000272 -->
@@ -2637,6 +2899,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0341</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000273 -->
@@ -2646,6 +2909,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0342</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000274 -->
@@ -2655,6 +2919,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0343</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000275 -->
@@ -2664,6 +2929,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0344</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000276 -->
@@ -2673,6 +2939,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0345</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000277 -->
@@ -2682,6 +2949,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0346</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000278 -->
@@ -2691,6 +2959,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0347</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000279 -->
@@ -2700,6 +2969,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0360</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000280 -->
@@ -2709,6 +2979,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0361</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000281 -->
@@ -2718,6 +2989,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0363</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000282 -->
@@ -2727,6 +2999,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0364</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000283 -->
@@ -2736,6 +3009,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0365</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000284 -->
@@ -2745,6 +3019,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0366</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000285 -->
@@ -2754,6 +3029,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0367</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000286 -->
@@ -2763,6 +3039,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0368</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000287 -->
@@ -2772,6 +3049,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0369</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000288 -->
@@ -2781,6 +3059,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0370</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000289 -->
@@ -2790,6 +3069,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0373</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000290 -->
@@ -2799,6 +3079,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0375</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000291 -->
@@ -2808,6 +3089,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0377</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000292 -->
@@ -2817,6 +3099,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0378</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000293 -->
@@ -2826,6 +3109,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0381</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000294 -->
@@ -2835,6 +3119,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0382</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000295 -->
@@ -2844,6 +3129,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0383</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000296 -->
@@ -2853,6 +3139,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0384</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000297 -->
@@ -2862,6 +3149,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0385</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000298 -->
@@ -2871,6 +3159,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0386</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000299 -->
@@ -2880,6 +3169,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0387</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000300 -->
@@ -2889,6 +3179,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0388</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000301 -->
@@ -2898,6 +3189,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0389</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000302 -->
@@ -2907,6 +3199,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0390</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000303 -->
@@ -2916,6 +3209,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0391</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000304 -->
@@ -2925,6 +3219,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0392</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000305 -->
@@ -2934,6 +3229,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0393</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000306 -->
@@ -2943,6 +3239,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0394</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000307 -->
@@ -2952,6 +3249,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0395</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000308 -->
@@ -2961,6 +3259,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0396</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000309 -->
@@ -2970,6 +3269,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0397</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000310 -->
@@ -2979,6 +3279,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0398</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000311 -->
@@ -2988,6 +3289,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0400</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000312 -->
@@ -2997,6 +3299,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0401</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000313 -->
@@ -3006,6 +3309,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0402</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000314 -->
@@ -3015,6 +3319,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0403</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000315 -->
@@ -3024,6 +3329,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0404</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000316 -->
@@ -3033,6 +3339,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0406</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000317 -->
@@ -3042,6 +3349,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0407</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000318 -->
@@ -3051,6 +3359,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0408</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000319 -->
@@ -3060,6 +3369,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0409</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000320 -->
@@ -3069,6 +3379,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0412</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000321 -->
@@ -3078,6 +3389,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0413</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000322 -->
@@ -3087,6 +3399,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0414</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000323 -->
@@ -3096,6 +3409,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0415</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000324 -->
@@ -3105,6 +3419,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0419</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000325 -->
@@ -3114,6 +3429,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0422</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000326 -->
@@ -3123,6 +3439,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0423</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000327 -->
@@ -3132,6 +3449,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0424</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000328 -->
@@ -3141,6 +3459,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0425</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000329 -->
@@ -3150,6 +3469,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0426</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000330 -->
@@ -3159,6 +3479,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0427</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000331 -->
@@ -3168,6 +3489,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0428</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000332 -->
@@ -3177,6 +3499,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0429</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000333 -->
@@ -3186,6 +3509,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0432</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000334 -->
@@ -3195,6 +3519,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0433</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000335 -->
@@ -3204,6 +3529,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0434</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000336 -->
@@ -3213,6 +3539,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0436</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000337 -->
@@ -3222,6 +3549,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0437</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000338 -->
@@ -3231,6 +3559,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0438</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000339 -->
@@ -3240,6 +3569,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0439</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000340 -->
@@ -3249,6 +3579,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0440</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000341 -->
@@ -3258,6 +3589,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0442</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000342 -->
@@ -3267,6 +3599,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0604</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000343 -->
@@ -3276,6 +3609,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0605</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000344 -->
@@ -3285,6 +3619,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0606</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000345 -->
@@ -3294,6 +3629,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0607</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000346 -->
@@ -3303,6 +3639,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0608</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000347 -->
@@ -3312,6 +3649,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0609</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000348 -->
@@ -3321,6 +3659,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0613</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000349 -->
@@ -3330,6 +3669,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0614</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000350 -->
@@ -3339,6 +3679,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0615</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000351 -->
@@ -3348,6 +3689,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0616</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000352 -->
@@ -3357,6 +3699,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0617</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000353 -->
@@ -3366,6 +3709,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0618</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000354 -->
@@ -3375,6 +3719,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0621</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000355 -->
@@ -3384,6 +3729,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0622</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000356 -->
@@ -3393,6 +3739,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0623</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000357 -->
@@ -3402,6 +3749,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0624</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000358 -->
@@ -3411,6 +3759,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0626</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000359 -->
@@ -3420,6 +3769,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0627</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000360 -->
@@ -3429,6 +3779,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0628</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000361 -->
@@ -3438,6 +3789,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0629</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000362 -->
@@ -3447,6 +3799,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0630</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000363 -->
@@ -3456,6 +3809,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0648</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000364 -->
@@ -3465,6 +3819,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0651</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000365 -->
@@ -3474,6 +3829,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0652</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000366 -->
@@ -3483,6 +3839,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0653</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000367 -->
@@ -3492,6 +3849,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0654</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000368 -->
@@ -3501,6 +3859,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0655</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000369 -->
@@ -3510,6 +3869,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0656</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000370 -->
@@ -3519,6 +3879,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0659</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000371 -->
@@ -3528,6 +3889,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0660</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000372 -->
@@ -3537,6 +3899,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0661</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000373 -->
@@ -3546,6 +3909,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0662</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000374 -->
@@ -3555,6 +3919,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0664</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000375 -->
@@ -3564,6 +3929,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0665</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000376 -->
@@ -3573,6 +3939,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0667</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000377 -->
@@ -3582,6 +3949,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0668</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000378 -->
@@ -3591,6 +3959,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0672</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000379 -->
@@ -3600,6 +3969,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0673</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000380 -->
@@ -3609,6 +3979,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0674</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000381 -->
@@ -3618,6 +3989,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0676</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000382 -->
@@ -3627,6 +3999,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0678</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000383 -->
@@ -3636,6 +4009,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0679</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000384 -->
@@ -3645,6 +4019,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0680</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000385 -->
@@ -3654,6 +4029,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0683</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000386 -->
@@ -3663,6 +4039,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0685</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000387 -->
@@ -3672,6 +4049,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0687</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000388 -->
@@ -3681,6 +4059,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0688</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000389 -->
@@ -3690,6 +4069,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0690</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000390 -->
@@ -3699,6 +4079,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0691</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000391 -->
@@ -3708,6 +4089,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0692</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000392 -->
@@ -3717,6 +4099,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0694</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000393 -->
@@ -3726,6 +4109,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0697</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000394 -->
@@ -3735,6 +4119,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0698</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000395 -->
@@ -3744,6 +4129,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">0699</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000396 -->
@@ -3753,6 +4139,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">8000</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000397 -->
@@ -3762,6 +4149,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">8001</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000398 -->
@@ -3771,6 +4159,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">8002</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000399 -->
@@ -3780,6 +4169,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">8003</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000400 -->
@@ -3789,6 +4179,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">8004</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000401 -->
@@ -3798,6 +4189,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">8005</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000402 -->
@@ -3807,6 +4199,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">8006</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000403 -->
@@ -3816,6 +4209,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">8007</obo:MEBDO_0000034>
     </owl:Class>
+    
 
 
     <!-- http://purl.obolibrary.org/obo/MEBDO_0000404 -->
@@ -3825,8 +4219,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000030"/>
         <obo:MEBDO_0000034 xml:lang="en">8008</obo:MEBDO_0000034>
     </owl:Class>
-
-
+    
 
 
     <!-- http://purl.obolibrary.org/obo/NCBITaxon_9606 -->
@@ -3884,6 +4277,63 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
         <obo:IAO_0000118>Medicare certified health care provider</obo:IAO_0000118>
         <obo:IAO_0000117>YL</obo:IAO_0000117>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/resource/United_Sates -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/United_Sates">
+        <rdf:type rdf:resource="&obo;MEBDO_0000020"/>
+        <rdfs:label xml:lang="en">United_States</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/resource/Georgia_(U.S._state) -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Georgia_(U.S._state)">
+        <rdf:type rdf:resource="&obo;MEBDO_0000011"/>
+        <rdfs:label xml:lang="en">Georgia_(U.S._state)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/resource/Hephzibah,_Georgia -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Hephzibah,_Georgia">
+        <rdf:type rdf:resource="&obo;MEBDO_0000010"/>
+        <rdfs:label xml:lang="en">Hephzibah,_Georgia</rdfs:label>
+        <obo:MEBDO_0000410 rdf:resource="&obo;MEBDO_0000412"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/resource/Richmond_County,_Georgia -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Richmond_County,_Georgia">
+        <rdf:type rdf:resource="&obo;MEBDO_0000015"/>
+        <rdfs:label xml:lang="en">Richmond_County,_Georgia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_0000412 -->
+
+    <owl:NamedIndividual rdf:about="&obo;MEBDO_0000412">
+        <rdf:type rdf:resource="&obo;MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">30815 zip code zone in 2012</rdfs:label>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 
