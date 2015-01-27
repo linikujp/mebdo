@@ -3,10 +3,9 @@
     <uri id="Imports Wizard Entry" name="http://purl.obolirary.org/obo/mebdo/mebdo_DRG_hospital_individual_import.owl" uri="mebdo_DRG_hospital_individual_import.owl"/>
     <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/mebdo_hospital_indivudial.owl" uri="file:/C:/Users/yuln/Documents/mebdo/developer/python%20parsing%20files/mebdo/mebdo_APC_hospital_individual.owl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1421948163576" name="http://purl.obolibrar.org/obo/mebdo_inferred.owl" uri="mebdo_inferred.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1421948163576" name="http://purl.obolibrary.org/obo/mebdo.owl" uri="mebdo.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1421948163576" name="http://purl.obolibrary.org/obo/mebdo_merged.owl" uri="mebdo_merged.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1421948163576" name="http://purl.obolibrary.org/obo/medbo/OMRSE_import.owl" uri="OMRSE_import.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1421948163576" name="http://purl.obolirary.org/obo/mebdo/mebdo_DRG_hospital_individual_import.owl" uri="mebdo_DRG_hospital_individual_import.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1422374431926" name="http://purl.obolibrar.org/obo/mebdo_inferred.owl" uri="mebdo_inferred.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1422374431926" name="http://purl.obolibrary.org/obo/mebdo.owl" uri="mebdo.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1422374431926" name="http://purl.obolibrary.org/obo/medbo/OMRSE_import.owl" uri="OMRSE_import.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1422374431926" name="http://purl.obolirary.org/obo/mebdo/mebdo_DRG_hospital_individual_import.owl" uri="mebdo_DRG_hospital_individual_import.owl"/>
     </group>
 </catalog>
