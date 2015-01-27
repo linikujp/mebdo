@@ -45,7 +45,7 @@ WHERE {
 
 
 
-5. search for  Detroit rdf:type http://dbpedia.org/class/yago/Municipality108626283
+5. search for  Detroit rdf:typeS
 
 SELECT DISTINCT *
 WHERE {
@@ -65,9 +65,7 @@ FILTER ( regex(?type, "Municipality108626283")) .
 SELECT DISTINCT *
 WHERE {
 ?city dbpedia-owl:type	dbpedia:City.
-?city dbpedia-owl:isPartOf ?county .
 ?city dbpedia-owl:isPartOf ?state .
-?county rdf:type yago:County108546183 .
 ?state rdf:type yago:StatesOfTheUnitedStates .
 ?state dbpedia-owl:largestCity ?city .
 }
