@@ -4305,6 +4305,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
     <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Georgia_(U.S._state)">
         <rdf:type rdf:resource="&obo;MEBDO_0000011"/>
         <rdfs:label xml:lang="en">Georgia_(U.S._state)</rdfs:label>
+        <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/Georgia_(U.S._state)"/>
     </owl:NamedIndividual>
     
 
@@ -4314,6 +4315,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
     <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Hephzibah,_Georgia">
         <rdf:type rdf:resource="&obo;MEBDO_0000010"/>
         <rdfs:label xml:lang="en">Hephzibah,_Georgia</rdfs:label>
+        <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/Richmond_County,_Georgia"/>
         <obo:MEBDO_0000410 rdf:resource="&obo;MEBDO_0000412"/>
     </owl:NamedIndividual>
     
@@ -4324,6 +4326,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
     <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Richmond_County,_Georgia">
         <rdf:type rdf:resource="&obo;MEBDO_0000015"/>
         <rdfs:label xml:lang="en">Richmond_County,_Georgia</rdfs:label>
+        <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/Hephzibah,_Georgia"/>
     </owl:NamedIndividual>
     
 
