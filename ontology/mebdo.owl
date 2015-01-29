@@ -295,13 +295,13 @@ Read more : http://www.ehow.com/about_4650731_definition-health-care-provider.ht
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000015"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000015"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -369,14 +369,14 @@ Read more : http://www.ehow.com/about_4650731_definition-health-care-provider.ht
         <rdfs:subClassOf rdf:resource="&obo;MEBDO_0000016"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;MEBDO_0000025"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000013"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000011"/>
+                <owl:onProperty rdf:resource="&obo;MEBDO_0000025"/>
+                <owl:someValuesFrom rdf:resource="&obo;MEBDO_0000013"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A county is a political and geographic subdivision of a state, usually assigned some governmental authority</obo:IAO_0000115>
@@ -4305,7 +4305,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
     <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Georgia_(U.S._state)">
         <rdf:type rdf:resource="&obo;MEBDO_0000011"/>
         <rdfs:label xml:lang="en">Georgia_(U.S._state)</rdfs:label>
-        <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/Georgia_(U.S._state)"/>
+        <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/United_Sates"/>
     </owl:NamedIndividual>
     
 
@@ -4315,6 +4315,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
     <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Hephzibah,_Georgia">
         <rdf:type rdf:resource="&obo;MEBDO_0000010"/>
         <rdfs:label xml:lang="en">Hephzibah,_Georgia</rdfs:label>
+        <obo:IAO_0000232>city-zip statement was extracted from DBpedia at 01/28/2015</obo:IAO_0000232>
         <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/Richmond_County,_Georgia"/>
         <obo:MEBDO_0000410 rdf:resource="&obo;MEBDO_0000412"/>
     </owl:NamedIndividual>
@@ -4326,7 +4327,7 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
     <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Richmond_County,_Georgia">
         <rdf:type rdf:resource="&obo;MEBDO_0000015"/>
         <rdfs:label xml:lang="en">Richmond_County,_Georgia</rdfs:label>
-        <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/Hephzibah,_Georgia"/>
+        <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/Georgia_(U.S._state)"/>
     </owl:NamedIndividual>
     
 
@@ -4336,6 +4337,8 @@ The broad and in-depth record-keeping of the Centers for Medicare &amp; Medicaid
     <owl:NamedIndividual rdf:about="&obo;MEBDO_0000412">
         <rdf:type rdf:resource="&obo;MEBDO_0000012"/>
         <rdfs:label xml:lang="en">30815 zip code zone in 2012</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="&xsd;anyURI">http://zipcode.org/30815</rdfs:seeAlso>
+        <obo:IAO_0000232></obo:IAO_0000232>
     </owl:NamedIndividual>
 </rdf:RDF>
 

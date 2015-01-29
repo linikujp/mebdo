@@ -1,0 +1,656 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolirary.org/obo/mebdo/mebdo_city_county_import.owl#"
+     xml:base="http://purl.obolirary.org/obo/mebdo/mebdo_city_county_import.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.obolirary.org/obo/mebdo/mebdo_city_county_import.owl"/>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_0000410  -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/MEBDO_0000410"/>
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000176  -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000176"/>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_0000020 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MEBDO_0000020"/>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_0000010 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MEBDO_0000010"/>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_0000011 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MEBDO_0000011"/>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_0000012 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_0000015 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MEBDO_0000015"/>
+
+
+      <!-- 
+   ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <!-- http://dbpedia.org/resource/United_Sates -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/United_Sates">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000020"/>
+        <rdfs:label xml:lang="en">United_States</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766601 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766601">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66601 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66601</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766601"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766602 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766602">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66602 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66602</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766602"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766603 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766603">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66603 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66603</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766603"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766604 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766604">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66604 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66604</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766604"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766605 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766605">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66605 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66605</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766605"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766606 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766606">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66606 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66606</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766606"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766607 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766607">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66607 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66607</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766607"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766608 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766608">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66608 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66608</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766608"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766609 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766609">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66609 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66609</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766609"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766610 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766610">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66610 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66610</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766610"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766611 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766611">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66611 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66611</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766611"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766612 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766612">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66612 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66612</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766612"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766614 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766614">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66614 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66614</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766614"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766615 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766615">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66615 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66615</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766615"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766616 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766616">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66616 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66616</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766616"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766617 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766617">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66617 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66617</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766617"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766618 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766618">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66618 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66618</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766618"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766619 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766619">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66619 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66619</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766619"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766620 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766620">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66620 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66620</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766620"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766621 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766621">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66621 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66621</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766621"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766622 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766622">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66622 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66622</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766622"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766624 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766624">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66624 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66624</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766624"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766625 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766625">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66625 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66625</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766625"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766626 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766626">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66626 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66626</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766626"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766628 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766628">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66628 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66628</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766628"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766629 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766629">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66629 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66629</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766629"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766636 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766636">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66636 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66636</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766636"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766637 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766637">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66637 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66637</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766637"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766642 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766642">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66642 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66642</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766642"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766647 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766647">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66647 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66647</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766647"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766652 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766652">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66652 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66652</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766652"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766653 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766653">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66653 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66653</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766653"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766667 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766667">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66667 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66667</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766667"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766675 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766675">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66675 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66675</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766675"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766683 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766683">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66683 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66683</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766683"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766692 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766692">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66692 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66692</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766692"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.obolibrary.org/obo/MEBDO_94766699 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_94766699">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>
+        <rdfs:label xml:lang="en">66699 zip code zone in 2015</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/66699</rdfs:seeAlso>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <obo:MEBDO_0000410 rdf:resource="http://purl.obolibrary.org/obo/MEBDO_94766699"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Topeka,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Topeka,_Kansas">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000010"/>
+        <rdfs:label xml:lang="en">Topeka,_Kansas</rdfs:label>
+        <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/Shawnee_County,_Kansas"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Shawnee_County,_Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Shawnee_County,_Kansas">        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000015"/>
+        <rdfs:label xml:lang="en">Shawnee_County,_Kansas</rdfs:label>        <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/Kansas"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://dbpedia.org/resource/Kansas -->
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Kansas">        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000011"/>
+        <rdfs:label xml:lang="en">Kansas</rdfs:label>        <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/United_Sates"/>
+    </owl:NamedIndividual>
+
+
+</rdf:RDF>
