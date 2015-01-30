@@ -8,7 +8,7 @@ def write_zipcode(zipcodeF,cityURI):
     updateFile.write('    <!-- http://purl.obolibrary.org/obo/MEBDO_'+zipcodeID+' -->\n\n')
     updateFile.write('    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/MEBDO_'+zipcodeID+'">\n')
     updateFile.write('        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000012"/>\n')
-    updateFile.write('        <rdfs:label xml:lang="en">'+zipcodeF +' zip code zone in 2015</rdfs:label>\n        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/'+zipcodeF+'</rdfs:seeAlso>\n    </owl:NamedIndividual>\n\n\n')
+    updateFile.write('        <rdfs:label xml:lang="en">'+zipcodeF +' zip code zone</rdfs:label>\n        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://zipcode.org/'+zipcodeF+'</rdfs:seeAlso>\n    </owl:NamedIndividual>\n\n\n')
     
     updateFile.write('    <!-- ' + str(cityURI) + ' -->\n')
     updateFile.write('    <owl:NamedIndividual rdf:about="'+str(cityURI)+'">\n')

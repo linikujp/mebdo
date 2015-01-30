@@ -76,7 +76,7 @@ write_head(annotationpropertyList, objectpropertyList, classList, fileName)
 wb = load_workbook(filename = 'US_state_city_county_postalCode.xlsx')
 ws = wb.get_sheet_by_name(name = 'US_state_city_county_postalCode')
 
-for i in range(1802,1803): ##7445
+for i in range(2,7450): ##2,7450
     print i
     print "starts...."
     cityURI = ws.cell('A'+ str(i)).value
@@ -94,19 +94,35 @@ for i in range(1802,1803): ##7445
     updateFile.write('    <!-- ' + str(cityURI) + ' -->\n')
     updateFile.write('    <owl:NamedIndividual rdf:about="'+str(cityURI)+'">\n')
     updateFile.write('        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000010"/>\n')
+    ## add curation note
+    curatorNote = str(curatorNote)
+    if curatorNote <> 'None':
+        if re.search('not', curatorNote, re.IGNORECASE):
+            comment = curatorNote.split(';')
+            if len(comment) >1 :
+                updateFile.write('        <obo:IAO_0000232>'+ comment[1] +'</obo:IAO_0000232>\n')
+                updateFile.write('        <obo:IAO_0000232>city was not found in zipcode.org on 01/28/2015</obo:IAO_0000232>\n')
+            else :
+                updateFile.write('        <obo:IAO_0000232>city was not found in zipcode.org on 01/28/2015</obo:IAO_0000232>\n')
+        elif re.search('zipcode.org', curatorNote):
+            updateFile.write('        <obo:IAO_0000232>city-zip statement was extracted from zipcode.org during 01/27/2015-01/29/2015</obo:IAO_0000232>\n')
+        else :
+            updateFile.write('        <obo:IAO_0000232>'+ curatorNote +'</obo:IAO_0000232>\n')
+    else:
+        updateFile.write('<obo:IAO_0000232>city-zip statement was extracted from DBpedia on 01/27/2015</obo:IAO_0000232>\n')
     updateFile.write('        <rdfs:label xml:lang="en">' + cityName + '</rdfs:label>\n')
     updateFile.write('        <obo:BFO_0000176 rdf:resource="' + countyURI + '"/>\n    </owl:NamedIndividual>\n\n\n')
 
     ##individual county
     updateFile.write('    <!-- http://dbpedia.org/resource/' +countyName +' -->\n')
     updateFile.write('    <owl:NamedIndividual rdf:about="' +countyURI+'">\n')
-    updateFile.write('        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000015"/>\n        <rdfs:label xml:lang="en">'+countyName+'</rdfs:label>')
+    updateFile.write('        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000015"/>\n        <rdfs:label xml:lang="en">'+countyName+'</rdfs:label>\n')
     updateFile.write('        <obo:BFO_0000176 rdf:resource="'+stateURI+'"/>\n    </owl:NamedIndividual>\n\n\n')
 
     ##individual state
     updateFile.write('    <!-- '+stateURI+' -->\n')
     updateFile.write('    <owl:NamedIndividual rdf:about="'+stateURI+'">\n')
-    updateFile.write('        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000011"/>\n        <rdfs:label xml:lang="en">'+stateName+'</rdfs:label>')
+    updateFile.write('        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000011"/>\n        <rdfs:label xml:lang="en">'+stateName+'</rdfs:label>\n')
     updateFile.write('        <obo:BFO_0000176 rdf:resource="http://dbpedia.org/resource/United_Sates"/>\n    </owl:NamedIndividual>\n\n\n')    
 
     
