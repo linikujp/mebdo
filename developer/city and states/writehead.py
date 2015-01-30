@@ -1,7 +1,7 @@
 def write_head(annotationpropertyList, objectpropertyList, classList, fileName): 
     i = 0
     m = 0
-    updateFile =  open('mebdo_city_county_import.owl','a')
+    updateFile =  open(fileName,'a')
 
 ## head of the RDF/XML file
     updateFile.write('<?xml version="1.0"?>\n')
@@ -11,31 +11,34 @@ def write_head(annotationpropertyList, objectpropertyList, classList, fileName):
     updateFile.write('    <owl:Ontology rdf:about="http://purl.obolirary.org/obo/mebdo/'+ fileName +'"/>\n\n\n')
     
 ## declare the annotationproperty classes
-    updateFile.write('    <!-- \n    ///////////////////////////////////////////////////////////////////////////////////////\n    //\n    // Annotation Properties\n    //\n    ///////////////////////////////////////////////////////////////////////////////////////\n     -->\n\n')
+    if len(annotationpropertyList) > 0 :
+        updateFile.write('    <!-- \n    ///////////////////////////////////////////////////////////////////////////////////////\n    //\n    // Annotation Properties\n    //\n    ///////////////////////////////////////////////////////////////////////////////////////\n     -->\n\n')
 
-    m=len(annotationpropertyList)
-    for i in range(m):
-        annotationProperty = annotationpropertyList[i]
-        updateFile.write('    <!-- http://purl.obolibrary.org/obo/'+ annotationProperty+ '  -->\n\n')
-        updateFile.write('    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/' + annotationProperty + '"/>\n\n\n') 
+        m=len(annotationpropertyList)
+        for i in range(m):
+            annotationProperty = annotationpropertyList[i]
+            updateFile.write('    <!-- http://purl.obolibrary.org/obo/'+ annotationProperty+ '  -->\n\n')
+            updateFile.write('    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/' + annotationProperty + '"/>\n\n\n') 
 
 ## declare the objectproperty classes
-    updateFile.write('    <!-- \n    ///////////////////////////////////////////////////////////////////////////////////////\n    //\n    // Object Properties\n    //\n    ///////////////////////////////////////////////////////////////////////////////////////\n     -->\n\n')
+    if len(objectpropertyList) > 0 :
+        updateFile.write('    <!-- \n    ///////////////////////////////////////////////////////////////////////////////////////\n    //\n    // Object Properties\n    //\n    ///////////////////////////////////////////////////////////////////////////////////////\n     -->\n\n')
 
-    m=len(objectpropertyList)
-    for i in range(m):
-        objectProperty=objectpropertyList[i]
-        updateFile.write('    <!-- http://purl.obolibrary.org/obo/'+ objectProperty+ '  -->\n\n')
-        updateFile.write('    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/' + objectProperty + '"/>\n\n\n') 
+        m=len(objectpropertyList)
+        for i in range(m):
+            objectProperty=objectpropertyList[i]
+            updateFile.write('    <!-- http://purl.obolibrary.org/obo/'+ objectProperty+ '  -->\n\n')
+            updateFile.write('    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/' + objectProperty + '"/>\n\n\n') 
 
 ## declare the classes
-    updateFile.write('    <!-- \n    ///////////////////////////////////////////////////////////////////////////////////////\n    //\n    // Classes\n    //\n    ///////////////////////////////////////////////////////////////////////////////////////\n     -->\n\n\n')
+    if len(classList) > 0:
+        updateFile.write('    <!-- \n    ///////////////////////////////////////////////////////////////////////////////////////\n    //\n    // Classes\n    //\n    ///////////////////////////////////////////////////////////////////////////////////////\n     -->\n\n\n')
 
-    m=len(classList)
-    for i in range(m):
-        classname=classList[i]
-        updateFile.write('    <!-- http://purl.obolibrary.org/obo/' + classname + ' -->\n\n')
-        updateFile.write('    <owl:Class rdf:about="http://purl.obolibrary.org/obo/' + classname + '"/>\n\n\n')
+        m=len(classList)
+        for i in range(m):
+            classname=classList[i]
+            updateFile.write('    <!-- http://purl.obolibrary.org/obo/' + classname + ' -->\n\n')
+            updateFile.write('    <owl:Class rdf:about="http://purl.obolibrary.org/obo/' + classname + '"/>\n\n\n')
     
 ## individuals 
 

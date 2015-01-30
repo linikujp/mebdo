@@ -88,9 +88,10 @@ for i in range(2,7450): ##2,7450
     postalCodeString = ws.cell('D'+ str(i)).value 
     curatorNote = ws.cell('E'+ str(i)).value
     
-    ## individual city without notion of zipcode
+    ##open file
     updateFile =  open('mebdo_city_county_import.owl','a')
     
+    ## individual city without notion of zipcode
     updateFile.write('    <!-- ' + str(cityURI) + ' -->\n')
     updateFile.write('    <owl:NamedIndividual rdf:about="'+str(cityURI)+'">\n')
     updateFile.write('        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000010"/>\n')
@@ -109,15 +110,15 @@ for i in range(2,7450): ##2,7450
         else :
             updateFile.write('        <obo:IAO_0000232>'+ curatorNote +'</obo:IAO_0000232>\n')
     else:
-        updateFile.write('<obo:IAO_0000232>city-zip statement was extracted from DBpedia on 01/27/2015</obo:IAO_0000232>\n')
+        updateFile.write('    <obo:IAO_0000232>city-zip statement was extracted from DBpedia on 01/27/2015</obo:IAO_0000232>\n')
     updateFile.write('        <rdfs:label xml:lang="en">' + cityName + '</rdfs:label>\n')
-    updateFile.write('        <obo:BFO_0000176 rdf:resource="' + countyURI + '"/>\n    </owl:NamedIndividual>\n\n\n')
+    updateFile.write('        <obo:BFO_0000176 rdf:resource="' + countyURI + '"/>\n')
+    updateFile.write('        <obo:BFO_0000176 rdf:resource="'+stateURI+'"/>\n    </owl:NamedIndividual>\n\n\n')
 
     ##individual county
     updateFile.write('    <!-- http://dbpedia.org/resource/' +countyName +' -->\n')
     updateFile.write('    <owl:NamedIndividual rdf:about="' +countyURI+'">\n')
-    updateFile.write('        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000015"/>\n        <rdfs:label xml:lang="en">'+countyName+'</rdfs:label>\n')
-    updateFile.write('        <obo:BFO_0000176 rdf:resource="'+stateURI+'"/>\n    </owl:NamedIndividual>\n\n\n')
+    updateFile.write('        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/MEBDO_0000015"/>\n        <rdfs:label xml:lang="en">'+countyName+'</rdfs:label>\n    </owl:NamedIndividual>\n\n\n')
 
     ##individual state
     updateFile.write('    <!-- '+stateURI+' -->\n')
