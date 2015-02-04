@@ -92,3 +92,62 @@ WHERE {
 Filter (regex(?state, "Alaska", "i")) .
 }
 
+9. How many predictes are there between a city and a state
+
+10. How may predicates from city to county
+SELECT DISTINCT ?p
+WHERE {
+?city dbpedia-owl:type	dbpedia:City.
+?city ?p ?county .
+?county rdf:type yago:County108546183 . 
+}
+
+ p
+http://dbpedia.org/property/subdivisionName
+http://dbpedia.org/ontology/isPartOf
+http://dbpedia.org/property/subdivisionType
+http://dbpedia.org/ontology/part
+http://dbpedia.org/property/p
+http://dbpedia.org/property/west
+http://dbpedia.org/property/east
+http://dbpedia.org/property/south
+http://dbpedia.org/property/north
+http://dbpedia.org/property/southeast
+http://dbpedia.org/property/northeast
+http://dbpedia.org/property/northwest
+http://dbpedia.org/property/region
+http://dbpedia.org/ontology/region
+http://dbpedia.org/property/county
+http://dbpedia.org/property/mapCaption
+http://dbpedia.org/property/southwest
+http://dbpedia.org/property/subdIvisionName
+http://dbpedia.org/ontology/governmentType
+http://dbpedia.org/property/twin
+http://dbpedia.org/ontology/twinCity
+http://dbpedia.org/ontology/country
+
+From county to city
+
+p
+http://dbpedia.org/ontology/capital
+http://dbpedia.org/property/seat
+http://dbpedia.org/ontology/countySeat
+http://dbpedia.org/ontology/largestCity
+http://dbpedia.org/property/twin
+http://dbpedia.org/ontology/twinCity
+http://dbpedia.org/property/hq
+http://dbpedia.org/property/east
+http://dbpedia.org/property/south
+http://dbpedia.org/property/southeast
+http://dbpedia.org/property/north
+http://dbpedia.org/property/adminhq
+http://dbpedia.org/property/adminHq
+http://dbpedia.org/property/parts
+http://dbpedia.org/property/namedFor
+http://dbpedia.org/property/exImageCap
+http://dbpedia.org/property/largestCity
+http://dbpedia.org/property/label
+http://dbpedia.org/property/southwest
+http://dbpedia.org/ontology/timeZone
+http://dbpedia.org/property/capital
+http://dbpedia.org/property/replace
